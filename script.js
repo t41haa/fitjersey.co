@@ -22,45 +22,45 @@ const products = [
   },
   {
     id: 4,
-    name: 'Classic Jersey',
+    name: 'Arsenal Away',
     price: 1199.99,
     description: 'Premium stitched football jersey.',
-    image: 'images/rma-home.jpg'
+    image: 'images/arsenal.webp'
   },
   {
     id: 5,
-    name: 'Classic Jersey',
-    price: 1199.99,
+    name: 'Barcelona Home 25/26',
+    price: 1999.99,
     description: 'Premium stitched football jersey.',
-    image: 'images/rma-home.jpg'
+    image: 'images/barca 25.jpg'
   },
   {
     id: 6,
-    name: 'Classic Jersey',
-    price: 1199.99,
+    name: 'Cactus Jack X Nike X FC Barcelona Jersey • Travis Scott ',
+    price: 2999.99,
     description: 'Premium stitched football jersey.',
-    image: 'images/rma-home.jpg'
+    image: 'images/cactuslmtd.webp'
   },
   {
     id: 7,
-    name: 'Classic Jersey',
+    name: 'FC BARCELONA x Travis Scott Cactus Jack Limited Edition',
     price: 1199.99,
     description: 'Premium stitched football jersey.',
-    image: 'images/rma-home.jpg'
+    image: 'images/barca cactus.webp'
   },
   {
     id: 8,
-    name: 'Classic Jersey',
+    name: 'Barcelon Away 25/26',
     price: 1199.99,
     description: 'Premium stitched football jersey.',
-    image: 'images/rma-home.jpg'
+    image: 'images/barca mamba.webp'
   },
   {
     id: 9,
-    name: 'Classic Jersey',
+    name: 'Madrid Third 23/24',
     price: 1199.99,
     description: 'Premium stitched football jersey.',
-    image: 'images/rma-home.jpg'
+    image: 'images/Madrid third.webp'
   },
   {
     id: 10,
