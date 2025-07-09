@@ -53,7 +53,7 @@ const products = [
     name: 'Barcelon Away 25/26',
     price: 1199.99,
     description: 'Premium stitched football jersey.',
-    image: 'images/barca mamba.webp'
+    image: 'images/barca mamba.jpg'
   },
   {
     id: 9,
