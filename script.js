@@ -44,7 +44,7 @@ const products = [
   {
     id: 7,
     name: 'FC BARCELONA x Travis Scott Cactus Jack Limited Edition',
-    price: 1199.99,
+    price: 2799.99,
     description: 'Premium stitched football jersey.',
     image: 'images/barca cactus.webp'
   },
