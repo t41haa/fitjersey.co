@@ -1,54 +1,168 @@
-let cart = [];  // To store the products added to the cart
-
-// Static product data (no fetch needed)
 const products = [
   {
     id: 1,
-    name: 'REAL MADRID HOME 24/25',
-    price: 999,
+    name: 'Real Madrid Home Jersey',
+    price: 999.99,
+    description: 'Official Real Madrid Home Jersey for the 24/25 season.',
     image: 'images/rma-home.jpg'
   },
   {
     id: 2,
-    name: 'BARCELONA AWAY 24/25',
-    price: 1999,
+    name: 'Barcelona Away Jersey',
+    price: 1999.99,
+    description: 'Official Barcelona Away Jersey for the 24/25 season.',
     image: 'images/barca-away.jpg'
   },
   {
     id: 3,
-    name: 'RMA PINK KIT',
-    price: 2999,
+    name: 'Real Madrid Pink Kit',
+    price: 2999.99,
+    description: 'Official Real Madrid Pink Kit.',
     image: 'images/rma-pink.jpg'
+  },
+  {
+    id: 4,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 5,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 6,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 7,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 8,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 9,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 10,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 11,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 12,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 13,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 14,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 15,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 16,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 17,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 18,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 19,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
+  },
+  {
+    id: 20,
+    name: 'Classic Jersey',
+    price: 1199.99,
+    description: 'Premium stitched football jersey.',
+    image: 'images/rma-home.jpg'
   }
 ];
+// Function to render product list
+function renderProductList() {
+  const productListContainer = document.getElementById('product-list');
 
-// Render products
-const productList = document.getElementById('product-list');
+  // Clear any existing items
+  productListContainer.innerHTML = '';
 
-products.forEach(product => {
-  const card = document.createElement('div');
-  card.className = 'product-card';
+  // Loop through and add each product card
+  products.forEach(product => {
+    const productItem = document.createElement('div');
+    productItem.classList.add('product-item');
 
-  // Create the product card HTML
-  card.innerHTML = `
-    <img src="${product.image}" alt="${product.name}">
-    <h3>${product.name}</h3>
-    <p>₹${product.price.toFixed(2)}</p>
-    <button class="add-to-cart" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
-  `;
+    productItem.innerHTML = `
+      <img src="${product.image}" alt="${product.name}" class="product-image">
+      <h3>${product.name}</h3>
+      <p><strong>Price:</strong> ₹${product.price.toFixed(2)}</p>
+      <p>${product.description}</p>
+      <a href="product.html?id=${product.id}" class="view-details">View Details</a>
+    `;
 
-  // Append card to the product list
-  productList.appendChild(card);
-
-  // Handle Add to Cart button click
-  card.querySelector('.add-to-cart').addEventListener('click', function () {
-    const productToAdd = {
-      name: this.dataset.name,
-      price: parseFloat(this.dataset.price)
-    };
-    cart.push(productToAdd);
-
-    // Update the cart count
-    document.getElementById('cart-count').innerText = cart.length;
+    productListContainer.appendChild(productItem);
   });
-});
+}
+
+// Render on page load
+renderProductList();
