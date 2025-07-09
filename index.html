@@ -7,17 +7,27 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-      <h1 style="text-align: center;">🛍️ Welcome to Fitjersey.co</h1>
-      <!-- Cart icon and counter -->
-      <div id="cart">
-        <img src="images/rma-home.jpg" alt="REAL MADRID HOME 24/25">
-        <span id="cart-count">0</span> <!-- Shows the number of items in the cart -->
-      </div>
-    </header>
-    
-    <!-- Your product list will go here -->
-    <div id="product-list" class="product-list"></div>
-    <script src="script.js"></script>
+  <header>
+    <div class="logo-container">
+      <img src="images/FJNEW.png" alt="Fitjersey Logo" />
+    </div>
+    <div id="cart">
+      <h1>🛒</h1> 
+      <span id="cart-count">0</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- THIS is where JS will inject cards -->
+    <section id="product-list" class="product-list"></section>
+  </main>
+
+  <footer style="text-align: center; padding: 20px; background-color: white; width: 100%; box-shadow: 0 -2px 5px rgba(0,0,0,0.05); margin-top: 40px;">
+    <a href="https://www.instagram.com/fitjersey.co" target="_blank" style="text-decoration: none; color: #E1306C; font-weight: bold;">
+      📷 Follow us on Instagram
+    </a>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
