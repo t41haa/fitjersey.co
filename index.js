@@ -23,10 +23,10 @@ const products = [
   // Dummy entries from here
   {
     id: 4,
-    name: 'Classic Jersey',
+    name: 'Arsena Away',
     price: 1199.99,
     description: 'Premium stitched football jersey.',
-    image: 'images/jersey1.jpg'
+    image: 'images/arsenal.jpg'
   },
   {
     id: 5,
