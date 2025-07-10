@@ -34,7 +34,7 @@ header {
 }
 
 .logo-container img {
-  height: 50px;
+  height: 80px;
 }
 
 #cart {
@@ -147,7 +147,7 @@ p {
   }
 
   .logo-container img {
-    height: 80px;
+    height: 50px;
   }
 }
 
