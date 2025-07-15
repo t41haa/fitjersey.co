@@ -1,63 +1,16 @@
-// === PRODUCTS ===
-const products = [
-  {
-    id: 1,
-    name: 'Real Madrid Home Jersey',
-    price: 999.99,
-    originalPrice: 1999.99,
-    rating: 4.8,
-    reviews: 341,
-    tags: ['🔥 BestSeller'],
-    description: 'Official Real Madrid Home Jersey for the 24/25 season.',
-    image: 'images/rma-home.jpg'
-  },
-  {
-    id: 2,
-    name: 'Barcelona Away Jersey',
-    price: 1499.99,
-    originalPrice: 1999.99,
-    rating: 4.5,
-    reviews: 272,
-    tags: ['Recommended'],
-    description: 'Official Barcelona Away Jersey for the 24/25 season.',
-    image: 'images/barca-away.jpg'
-  },
-  {
-    id: 3,
-    name: 'Real Madrid Pink Kit',
-    price: 1199.99,
-    originalPrice: 1799.99,
-    rating: 4.6,
-    reviews: 312,
-    tags: ['🔥 BestSeller'],
-    description: 'Official Real Madrid Pink Kit.',
-    image: 'images/rma-pink.jpg'
-  },
-  {
-    id: 4,
-    name: 'Arsenal Away 24/25',
-    price: 1099.99,
-    originalPrice: 1599.99,
-    rating: 4.3,
-    reviews: 190,
-    tags: ['Recommended'],
-    description: 'Premium stitched football jersey.',
-    image: 'images/arsenal.webp'
-  },
-  ...Array.from({ length: 16 }, (_, i) => ({
-    id: 5 + i,
-    name: 'Classic Jersey',
-    price: 1199.99,
-    originalPrice: 1499.99,
-    rating: 4.4,
-    reviews: 150 + i * 5,
-    tags: i % 2 === 0 ? ['🔥 BestSeller'] : ['Recommended'],
-    description: 'Premium stitched football jersey.',
-    image: 'images/rma-home.jpg'
-  }))
-];
+// === FETCH PRODUCTS FROM SERVER ===
+async function fetchProducts() {
+  try {
+    const response = await fetch('/api/products'); // This hits the backend route
+    const products = await response.json();
+    renderProductList(products);
+  } catch (error) {
+    console.error('Failed to fetch products:', error);
+  }
+}
 
-function renderProductList() {
+// === RENDER PRODUCTS ON PAGE ===
+function renderProductList(products) {
   const productListContainer = document.getElementById('product-list');
   productListContainer.innerHTML = '';
 
@@ -89,29 +42,6 @@ function renderProductList() {
   });
 }
 
-// === CAROUSEL FUNCTIONALITY ===
-let currentSlide = 0;
-
-function showSlide(index) {
-  const slides = document.querySelectorAll(".carousel-slide");
-  slides.forEach((slide, i) => {
-    slide.classList.remove("active");
-    if (i === index) slide.classList.add("active");
-  });
-}
-
-function nextSlide() {
-  const slides = document.querySelectorAll(".carousel-slide");
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
-}
-
-function prevSlide() {
-  const slides = document.querySelectorAll(".carousel-slide");
-  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-  showSlide(currentSlide);
-}
-
 // === STICKY HEADER ON SCROLL ===
 function handleHeaderScroll() {
   const header = document.querySelector('header');
@@ -122,9 +52,48 @@ function handleHeaderScroll() {
   }
 }
 
-// === ON PAGE LOAD ===
-window.addEventListener("DOMContentLoaded", () => {
-  renderProductList();
+// === INITIALIZE PAGE ===
+window.addEventListener("load", () => {
+  fetchProducts(); // ✅ fetch from backend
+
+  // === CAROUSEL SETUP ===
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".carousel-slide");
+  const dotsContainer = document.querySelector(".carousel-dots");
+
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement("span");
+    dot.classList.add("carousel-dot");
+    if (index === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+      currentSlide = index;
+      showSlide(index);
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".carousel-dot");
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
 
   // Carousel Buttons
   const nextBtn = document.querySelector(".carousel-btn.next");
@@ -134,6 +103,9 @@ window.addEventListener("DOMContentLoaded", () => {
     prevBtn.addEventListener("click", prevSlide);
     setInterval(nextSlide, 4000); // Auto slide every 4s
   }
+
+  // Show first slide
+  showSlide(currentSlide);
 
   // Sticky Header
   window.addEventListener("scroll", handleHeaderScroll);
