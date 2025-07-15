@@ -1,7 +1,7 @@
 // === FETCH PRODUCTS FROM SERVER ===
 async function fetchProducts() {
   try {
-    const response = await fetch('/api/products'); // This hits the backend route
+    const response = await fetch('products.json');
     const products = await response.json();
     renderProductList(products);
   } catch (error) {
