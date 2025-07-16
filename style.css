@@ -29,6 +29,7 @@ header {
 
 .header-left img {
   max-height: 60px;
+  width: auto;
 }
 
 .nav-links {
@@ -36,12 +37,14 @@ header {
   gap: 20px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
   color: #ffffff;
   text-decoration: none;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .header-right {
@@ -67,9 +70,20 @@ header {
   margin-left: 5px;
 }
 
+/* === HAMBURGER MENU === */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1100;
+}
+
 /* === CAROUSEL === */
 .carousel-container {
-  margin-top: 80px; /* match header height */
+  margin-top: 80px;
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -84,7 +98,8 @@ header {
 
 .carousel-slide {
   width: 100%;
-  height: auto;
+  height: 400px;
+  object-fit: cover;
   opacity: 0;
   position: absolute;
   top: 0;
@@ -96,6 +111,7 @@ header {
   opacity: 1;
   position: relative;
 }
+
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -107,7 +123,18 @@ header {
   padding: 10px;
   font-size: 1.5rem;
   cursor: pointer;
+  border-radius: 50%;
+  user-select: none;
 }
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
 .carousel-dots {
   display: flex;
   justify-content: center;
@@ -126,12 +153,6 @@ header {
 
 .carousel-dot.active {
   background-color: #333;
-}
-.carousel-btn.prev {
-  left: 10px;
-}
-.carousel-btn.next {
-  right: 10px;
 }
 
 /* === PRODUCTS === */
@@ -204,36 +225,52 @@ p {
   }
 }
 
-@media (max-width: 600px) {
-  .product-list {
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+  .carousel-slide {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .hamburger {
+    display: block;
   }
 
   .nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: #000;
     flex-direction: column;
-    gap: 10px;
-  }
-
-  .carousel-btn {
-    font-size: 1.5rem;
-    padding: 6px;
-  }
-
-  .header-left img {
-    max-height: 45px;
-  }
-
-  header {
-    flex-direction: column;
-    height: auto;
+    align-items: flex-start;
     padding: 10px 20px;
+    display: none;
   }
 
   .nav-links a {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
   }
 
-  .login-btn, #cart {
-    font-size: 0.9rem;
+  .nav-links.active {
+    display: flex;
+  }
+
+  .header-right {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-list {
+    grid-template-columns: 1fr;
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  .product-item {
+    max-width: 100%;
   }
 }
