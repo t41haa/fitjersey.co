@@ -1,4 +1,4 @@
-[
+const products = [
   {
     "id": 1,
     "name": "Real Madrid Home Jersey",
@@ -219,4 +219,4 @@
     "description": "Premium stitched football jersey.",
     "image": "images/rma-home.jpg"
   }
-]
+];
