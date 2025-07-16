@@ -1,3 +1,14 @@
+// === FETCH PRODUCTS FROM SERVER ===
+async function fetchProducts() {
+  try {
+    const response = await fetch('products.js');
+    const products = await response.json();
+    renderProductList(products);
+  } catch (error) {
+    console.error('Failed to fetch products:', error);
+  }
+}
+
 // === RENDER PRODUCTS ON PAGE ===
 function renderProductList(products) {
   const productListContainer = document.getElementById('product-list');
@@ -43,7 +54,7 @@ function handleHeaderScroll() {
 
 // === INITIALIZE PAGE ===
 window.addEventListener("load", () => {
-  // Use products from products.js directly
+  // Use products variable from products.js directly here
   renderProductList(products);
 
   // === CAROUSEL SETUP ===
@@ -51,6 +62,10 @@ window.addEventListener("load", () => {
   const slides = document.querySelectorAll(".carousel-slide");
   const dotsContainer = document.querySelector(".carousel-dots");
 
+  // Clear existing dots to avoid duplicates
+  dotsContainer.innerHTML = '';
+
+  // Create dots for each slide
   slides.forEach((_, index) => {
     const dot = document.createElement("span");
     dot.classList.add("carousel-dot");
@@ -84,15 +99,18 @@ window.addEventListener("load", () => {
     showSlide(currentSlide);
   }
 
+  // Carousel Buttons
   const nextBtn = document.querySelector(".carousel-btn.next");
   const prevBtn = document.querySelector(".carousel-btn.prev");
   if (nextBtn && prevBtn) {
     nextBtn.addEventListener("click", nextSlide);
     prevBtn.addEventListener("click", prevSlide);
-    setInterval(nextSlide, 4000);
+    setInterval(nextSlide, 4000); // Auto slide every 4s
   }
 
+  // Show first slide
   showSlide(currentSlide);
 
+  // Sticky Header
   window.addEventListener("scroll", handleHeaderScroll);
 });
