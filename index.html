@@ -14,13 +14,17 @@
     <div class="header-left">
       <img src="images/fj1.png" alt="Fitjersey Logo" />
     </div>
-    <nav class="nav-links">
+
+    <button class="hamburger" id="hamburger">&#9776;</button>
+
+    <nav class="nav-links" id="nav-menu">
       <a href="#">Home</a>
       <a href="#">Shop</a>
       <a href="#">About</a>
-    </nav>
-    <div class="header-right">
       <a href="#" class="login-btn">Login</a>
+    </nav>
+
+    <div class="header-right desktop-cart">
       <div id="cart">🛒 <span id="cart-count">0</span></div>
     </div>
   </header>
@@ -35,11 +39,14 @@
       <img src="images/messi.webp" class="carousel-slide" alt="Slide 4">
     </div>
     <button class="carousel-btn next">❯</button>
+    <!-- Carousel Dots -->
     <div class="carousel-dots"></div>
   </section>
 
   <!-- PRODUCTS -->
   <main>
+    <script src="products.js"></script>
+    <script src="script.js"></script>
     <section id="product-list" class="product-list"></section>
   </main>
 
@@ -51,9 +58,15 @@
       📷 Follow us on Instagram
     </a>
   </footer>
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
 
-  <!-- ✅ Load scripts only once, at the end -->
-  <script src="products.js"></script>
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+  </script>
+
   <script src="script.js"></script>
 </body>
 
