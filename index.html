@@ -24,6 +24,7 @@
       <div id="cart">🛒 <span id="cart-count">0</span></div>
     </div>
   </header>
+
   <!-- CAROUSEL -->
   <section class="carousel-container">
     <button class="carousel-btn prev">❮</button>
@@ -34,14 +35,11 @@
       <img src="images/messi.webp" class="carousel-slide" alt="Slide 4">
     </div>
     <button class="carousel-btn next">❯</button>
-    <!-- Carousel Dots -->
     <div class="carousel-dots"></div>
   </section>
 
   <!-- PRODUCTS -->
   <main>
-    <script src="products.js"></script>
-    <script src="script.js"></script>
     <section id="product-list" class="product-list"></section>
   </main>
 
@@ -54,6 +52,8 @@
     </a>
   </footer>
 
+  <!-- ✅ Load scripts only once, at the end -->
+  <script src="products.js"></script>
   <script src="script.js"></script>
 </body>
 
