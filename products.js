@@ -220,3 +220,4 @@ const products = [
     "image": "images/rma-home.jpg"
   }
 ];
+window.products = products; // ✅ Make products accessible globally
